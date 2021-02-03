@@ -1,0 +1,10 @@
+###
+GET https://bigquery.googleapis.com/bigquery/v2/projects/master-sector-247616/datasets/_temporary
+Authorization: Bearer ya29.c.Kp0B7wekED-o89eHWhDhACVkMhIJsstWH0cU_KUv36Phb_ivulS5bd6vnnKiYyXgsm_F3pE4FayhssNjWQHl7EUsrhWquNHuAhyq2CPugNasHoT0iRqoBSzDVGDq4THZWOiCidwZ6_bVkQ9K7JoDNL8MM2RyfUyL1U0zgWlpnmGpMwRE5KnXyHcDWa9QqwKG7tbUE_lf3uDt42heuuTFDA
+
+###
+GET https://www.googleapis.com/oauth2/v4/token
+    ?client_id=104624210092262397863
+    &client_secret=
+    &refresh_token=
+    &grant_type=refresh_token

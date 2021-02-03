@@ -1,0 +1,51 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'bigquery-client-rust'",
+            "env" : {
+                "GOOGLE_APPLICATION_CREDENTIALS": "~/.gcloud/ia-front-bot-key.json"
+            },
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=bigquery-client-rust",
+                    "--package=bigquery-client-rust"
+                ],
+                "filter": {
+                    "name": "bigquery-client-rust",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'bigquery-client-rust'",
+            "env" : {
+                "GOOGLE_APPLICATION_CREDENTIALS": "~/.gcloud/ia-front-bot-key.json"
+            },
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=bigquery-client-rust",
+                    "--package=bigquery-client-rust"
+                ],
+                "filter": {
+                    "name": "bigquery-client-rust",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
