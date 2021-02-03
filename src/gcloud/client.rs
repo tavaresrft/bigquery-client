@@ -6,6 +6,8 @@ pub struct GCloud {
     token: Token,
 }
 
+pub type GCloudFactory = dyn Fn()->GCloud;
+
 impl GCloud {
 
     pub fn default() -> GCloud {
@@ -30,6 +32,12 @@ impl GCloud {
     
 }
 
+pub(crate) trait Endpoint {
+    fn endpoint(&self, resource: &str) -> String {
+        let base_endpoint = "https://bigquery.googleapis.com";
+        format!("{}/{}", base_endpoint, resource)
+    }
+}
 fn generate_token(credentials_file: &str) -> Token {
     Builder::new().file(credentials_file).build().unwrap()
 }

@@ -1,6 +1,4 @@
-mod file_client;
-mod bigquery;
-mod crudable;
+pub mod client;
 
-
-pub use file_client::GCloud;
+pub mod bigquery;
+pub use client::{GCloud, GCloudFactory};
