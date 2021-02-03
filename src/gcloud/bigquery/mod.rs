@@ -8,7 +8,6 @@ pub type CrudResult<T> = Result<T, Box<dyn std::error::Error>>;
 
 
 pub struct BigQueryClient<'a> {
-    gcloud_client: GCloud,
     gcloud_factory: &'a GCloudFactory,
     project_id: String,
 }
@@ -16,10 +15,8 @@ pub struct BigQueryClient<'a> {
 impl<'a> BigQueryClient<'a> {
 
     pub fn new(gcloud_factory: &'a GCloudFactory, project_id: &str) -> BigQueryClient<'a> {
-        let gcloud_client = gcloud_factory();
-        
+       
         BigQueryClient{
-            gcloud_client,
             gcloud_factory,
             project_id: project_id.to_owned(),
         }

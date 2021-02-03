@@ -17,8 +17,9 @@ impl<'a> Table {
 
     pub fn insert_many(&self, entities: &Vec<&impl Serialize>) -> CrudResult<()> {
         let header = self.gcloud_client.header_value();
-        let resource = "/bigquery/v2/projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll";
-        let endpoint = self.endpoint(resource);
+        let resource = format!("bigquery/v2/projects/{project_id}/datasets/{dataset_id}/tables/{table_id}/insertAll",
+                                     project_id=self.project_id, dataset_id=self.dataset_id, table_id=self.name);
+        let endpoint = self.endpoint(resource.as_str());
 
         println!("{}", header);
         println!("{}", endpoint);
