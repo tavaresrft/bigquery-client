@@ -9,7 +9,8 @@
             "request": "launch",
             "name": "Debug executable 'bigquery-client-rust'",
             "env" : {
-                "GOOGLE_APPLICATION_CREDENTIALS": "~/.gcloud/ia-front-bot-key.json"
+                "GOOGLE_APPLICATION_CREDENTIALS": "/home/claudino/.gcloud/ia-front-bot-key.json",
+                "GOOGLE_CLOUD_PROJECT": "master-sector-247616"
             },
             "cargo": {
                 "args": [
@@ -30,7 +31,8 @@
             "request": "launch",
             "name": "Debug unit tests in executable 'bigquery-client-rust'",
             "env" : {
-                "GOOGLE_APPLICATION_CREDENTIALS": "~/.gcloud/ia-front-bot-key.json"
+                "GOOGLE_APPLICATION_CREDENTIALS": "/home/claudino/.gcloud/ia-front-bot-key.json",
+                "GOOGLE_CLOUD_PROJECT": "master-sector-247616"
             },
             "cargo": {
                 "args": [

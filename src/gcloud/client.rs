@@ -27,7 +27,7 @@ impl GCloud {
 
     pub fn header_value(&self) -> String {
         let header = self.token.header_value().unwrap();
-        format!("Authorization {}", header)
+        format!("{}", header)
     }
     
 }

@@ -1,17 +1,15 @@
 mod gcloud;
 
-use tokio;
 use gcloud::{GCloud, bigquery::BigQueryClient};
 use serde::{Serialize, Deserialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 struct TesteRow {
-    id: u32,
+    id: u64,
     nome: String,
 }
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>>{
+fn main() -> Result<(), Box<dyn std::error::Error>>{
     let project_id = std::env::var("GOOGLE_CLOUD_PROJECT").unwrap();
     
     let gcloud_factory = ||{GCloud::default()};

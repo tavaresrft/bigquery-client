@@ -1,8 +1,10 @@
+mod entities;
+
 use serde::{Serialize};
 use super::CrudResult;
-use serde_json;
 use crate::gcloud::{GCloud, GCloudFactory, client::Endpoint};
 
+use entities::{InsertAll};
 pub struct Table {
     gcloud_client: GCloud,
     project_id: String,
@@ -16,16 +18,25 @@ impl Endpoint for Table {}
 impl<'a> Table {
 
     pub fn insert_many(&self, entities: &Vec<&impl Serialize>) -> CrudResult<()> {
-        let header = self.gcloud_client.header_value();
+        let header_value = self.gcloud_client.header_value();
         let resource = format!("bigquery/v2/projects/{project_id}/datasets/{dataset_id}/tables/{table_id}/insertAll",
                                      project_id=self.project_id, dataset_id=self.dataset_id, table_id=self.name);
         let endpoint = self.endpoint(resource.as_str());
 
-        println!("{}", header);
-        println!("{}", endpoint);
-        println!("{:?}", serde_json::to_string(entities));
+        let body = InsertAll::new(entities);
 
-        Ok(())
+        let request_client = reqwest::blocking::Client::new();
+        let response = request_client
+            .post(endpoint.as_str())
+            .json(&body)
+            .header("Authorization", header_value)
+            .send();
+
+        match response {
+            Ok(_) => Ok(()),
+            Err(err) => Err(Box::new(err)),
+        }
+        
     }
 
     pub fn insert(&self, entity: &impl Serialize) -> CrudResult<()> {
