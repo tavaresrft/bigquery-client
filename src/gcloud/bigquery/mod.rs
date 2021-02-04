@@ -1,8 +1,8 @@
 use super::GCloudFactory;
 
-mod table;
+pub mod table;
 
-use table::Table;
+pub use table::Table;
 
 pub type CrudResult<T> = Result<T, Box<dyn std::error::Error>>;
 

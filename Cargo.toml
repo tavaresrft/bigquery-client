@@ -1,10 +1,20 @@
 [package]
-name = "bigquery-client-rust"
-version = "0.1.0"
-authors = ["Andre Claudino <andre.claudino@b2wdigital.com>"]
+name = "bigquery-client"
+version = "0.1.0-alpha"
+authors = ["Andre Claudino <claudino@d2x.com.br>", "Pedro Braga <pedro.rangel.braga@gmail.com>", "Romulo Tavares <tavaresrft@gmail.com>"]
 edition = "2018"
+license = "MIT OR Apache-2.0"
+description = "An idiomatic library for Google BigQuery in Rust"
+repository = "https://github.com/andreclaudino/bigquery-client"
+readme = "README.md"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+path = "src/lib.rs"
+name = "bigquery_client"
+edition = "2018"
+crate_type = ["staticlib", "lib", "cdylib"]
+
+
 
 [dependencies]
 serde = { version = "^1.0.123", features = ["derive"]}
